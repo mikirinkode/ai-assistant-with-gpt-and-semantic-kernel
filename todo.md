@@ -6,5 +6,7 @@
 [x] allow GPT to initiate call to external system
 [x] Make it like you have a chatting
 [x] Add Semantic Kernel
+[x] add sumarize skills
+[] make summarize skills can read link of website / youtube
 [] add more skills
 [] make it save previous chatting (database maybe)

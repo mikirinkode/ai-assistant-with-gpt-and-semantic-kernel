@@ -64,19 +64,28 @@ with col1:
 with col2:
     with st.container(border=True):
         # select skills
-        skills = st.selectbox("Select Skill", ["Brainstorming"])
+        skills = st.selectbox("Select Skill", ["Expert Brainstorming", "Summarizer"])
+        
+        avatar_icon = "🤖"
+        text_area_label = ""
+        
+        if skills == "Expert Brainstorming":
+            avatar_icon = "🧠"
+            text_area_label = "What is your idea?"
+        elif skills == "Summarizer":
+            avatar_icon = "📰"
+            text_area_label = "Paste your text here"
+        
+        if skills is not None and skills != "":
+            with st.chat_message("assistant", avatar=avatar_icon):
+                message_placeholder = st.markdown("Hello I am " + skills)
         
         # React to user input
-        if prompt := st.text_input("Enter your Ideas", key="idea_input"):
-            # Display user message in chat message container
-            with st.chat_message("user"):
-                st.markdown(prompt)
-            # add user message to history
-            st.session_state.messages.append({"role": "user", "content": prompt})
+        if prompt := st.text_area(text_area_label, key="skill_prompt_input"):
 
             # Display assistant response in chat message container
             with st.chat_message("assistant"):
                 message_placeholder = st.empty()
                 with st.spinner("Thinking..."):
-                    full_response = miriko.brainstormer(prompt)
+                    full_response = miriko.use_skill(skills, prompt)
                     message_placeholder.markdown(full_response)

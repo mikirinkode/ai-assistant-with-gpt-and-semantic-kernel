@@ -23,10 +23,15 @@ class Miriko:
         # import created skill
         self.skill = self.kernel.import_semantic_skill_from_directory("./skills", "MirikoSkill")
         
-        self.brainstormer = self.skill["Brainstorming"]
+        self.brainstormer = self.skill["ExpertBrainstorming"]
+        self.summarizer = self.skill["Summarizer"]
         
-    def brainstormer(self, prompt):
-        return self.brainstormer.brainstorm(prompt)
+    def use_skill(self, skill_name, prompt):
+        if skill_name == "Expert Brainstorming":
+            return self.brainstormer(prompt)
+        elif skill_name == "Summarizer":
+            return self.summarizer(prompt)
+        
     
     def chat(self, prompt):
         # add prompt to memory so miriko can remember it

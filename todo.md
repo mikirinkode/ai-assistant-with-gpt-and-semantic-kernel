@@ -9,4 +9,8 @@
 [x] add sumarize skills
 [] make summarize skills can read link of website / youtube
 [] add more skills
+[] Tech Support Advisor (Automation & Integration)
+[] Creative Writing Coach (Learning)
+[] Ghost Writer (AI Assistant in Writing)
+[] Android Coding Helper
 [] make it save previous chatting (database maybe)
